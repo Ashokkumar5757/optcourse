@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Level 1 Quiz</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div class="title">Bootstrap Level 1 Quiz</div>
+<div class="quiz">
+  <div class="question"></div>
+  <p class="option" id="option1"></p>
+  <p class="option" id="option2"></p>
+  <p class="option" id="option3"></p>
+  <p class="option" id="option4"></p>
+  <div class="progress">This is x of y questions.</div>
+</div>
+<div class="startBtn" onclick="startGame();"><p id="startText">Start Quiz</p></div>
+<div class="gameOver">
+
+  <h1>Game Over</h1>
+  <p id="score">You got x out of y answers right</p>
+</div>
+<script>
+  //Global variables
+var questionDisplay = document.querySelector(".question");
+var option1 = document.querySelector("#option1");
+var option2 = document.querySelector("#option2");
+var option3 = document.querySelector("#option3");
+var option4 = document.querySelector("#option4");
+var quiz = document.querySelector(".quiz");
+var startBtn = document.querySelector(".startBtn");
+var startText = document.querySelector("#startText");
+var gameOver = document.querySelector(".gameOver");
+
+//Initiate values
+var correctAnswers = 0;
+let question;
+
+function startGame(){
+  gameOver.style.visibility = "hidden";
+  startBtn.style.visibility = "hidden";
+  quiz.style.visibility = "visible";
+  correctAnswers = 0;
+  questionOne();
+}
+
+//Functions that create questions and answers
+var questionOne = () => {
+  question = {
+  number: "1",
+  question: "1.Who developed the bootstrap?",
+  option1: "James Gosling",
+  option2: "Mark Jukervich",
+  option3: "Dennis Ritchie",
+  option4: "Mark Otto and Jacob Thornton",
+  correctAnswer: "Mark Otto and Jacob Thornton"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTwo = () => {
+  question = {
+    number: "2",
+    question: "Which of the following class in Bootstrap is used to provide a responsive fixed width container?",
+    option1: ".container-fixed",
+    option2: ".container-fluid",
+    option3: ".container",
+    option4: "none of these",
+    correctAnswer: ".container"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionThree = () => {
+  question = {
+    number: "3",
+    question: "3.Which of the following class in bootstrap is used to create a big box for calling extra attention?",
+    option1: ".jumbotron",
+    option2: ".container-fluid",
+    option3: ".container",
+    option4: ".box",
+    correctAnswer: ".jumbotron"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFour = () => {
+  question = {
+    number: "4",
+  question: "4.How many columns are allowed in a bootstrap grid system?",
+  option1: "11",
+  option2: "8",
+  option3: "5",
+  option4: "12",
+  correctAnswer: "12"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFive = () => {
+  question = {
+    number: "5",
+  question: "5.Which of the following class is used to create a black navigation bar?",
+  option1: ".navbar-default",
+  option2: ".navbar-inverse",
+  option3: ".navbar-black",
+  option4: ".navbar-dark",
+  correctAnswer: ".navbar-inverse"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSix = () => {
+  question = {
+  number: "6",
+  question: "6.The plugin used to create a cycle through elements as a slideshow is -",
+  option1: "slideshow",
+  option2: "scrollspy",
+  option3: "carousel",
+  option4: "none of these",
+  correctAnswer: "carousel"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSeven = () => {
+  question = {
+  number: "7",
+  question: "7.Which of the following class in Bootstrap is used to create a dropdown menu?",
+  option1: ".dropdown",
+  option2: ".select",
+  option3: ".select-list",
+  option4: "none of these",
+  correctAnswer: ".dropdown"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionEight = () => {
+  question = {
+  number: "8",
+  question: "8.Which of the following class in Bootstrap is used to create a basic list group?",
+  option1: ".grouped-list",
+  option2: ".select-list",
+  option3: ".list-group",
+  option4: ".list-grouped",
+  correctAnswer: ".list-group"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionNine = () => {
+  question = {
+  number: "9",
+  question: "9.The class used to shape an image to a circle is -",
+  option1: ".img-rounded",
+  option2: ".img-circle",
+  option3: "img-square",
+  option4: "none of these",
+  correctAnswer: ".img-circle",
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTen = () => {
+  question = {
+  number: "10",
+  question: "10.Which of the following class in Bootstrap is used to add a zebra-stripe to a table?",
+  option1: ".tab-striped",
+  option2: ".zebra-strip",
+  option3: ".table-stripped",
+  option4: ".table-striped",
+  correctAnswer: ".table-striped"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+//Show progress throughout quiz
+function displayProgress(currentQuestion){
+  var progress = document.querySelector(".progress");
+  progress.innerHTML = `This is ${currentQuestion} of 10 questions.`
+}
+
+//Show questions and potential answers
+function displayQuestion(question){
+  questionDisplay.innerHTML = question.question;
+  option1.innerHTML = question.option1;
+  option2.innerHTML = question.option2;
+  option3.innerHTML = question.option3;
+  option4.innerHTML = question.option4;
+}
+
+//Check if answer is correct, add to correct answers count
+function checkAnswer(e, question){
+  if (e.target.innerHTML === question.correctAnswer){
+    correctAnswers++;
+  }
+}
+
+//Load next question
+function moveToNextQuestion(currentQuestion){
+  switch (currentQuestion){
+    case "1":
+      questionTwo();
+      break;
+      case "2":
+      questionThree();
+      break;
+      case "3":
+      questionFour();
+      break;
+      case "4":
+      questionFive();
+      break;
+      break;
+      case "5":
+      questionSix();
+      break;
+      break;
+      case "6":
+      questionSeven();
+      break;
+      break;
+      case "7":
+      questionEight();
+      break;
+      break;
+      case "8":
+      questionNine();
+      break;
+      break;
+      case "9":
+      questionTen();
+      break;
+      case "10":
+      showScore(correctAnswers);
+      break;
+    default:
+  }
+  
+}
+
+//Game over, reveal score
+function showScore(correctAnswers){
+  var score = document.getElementById("score");
+  score.innerHTML = `You got ${correctAnswers} out of 10 answers correct!`;
+  quiz.style.visibility = "hidden";
+  gameOver.style.visibility = "visible";
+  startText.innerHTML = "Play Again";
+  startBtn.style.visibility = "visible";
+}
+
+//On each click, check selected option and change to next question.
+document.querySelectorAll('.option').forEach(option => {
+  option.addEventListener('click', function(e) {
+  if (e.target.classList.contains("option")){
+    
+    checkAnswer(e, question);
+    moveToNextQuestion(question.number);
+  } else {
+    console.log("answer not selected");
+  }
+});
+});
+</script>
+</body>
+</html>

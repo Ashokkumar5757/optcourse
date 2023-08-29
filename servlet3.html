@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servlet Level 3 Quiz</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div class="title">Servlet Level 3 Quiz</div>
+<div class="quiz">
+  <div class="question"></div>
+  <p class="option" id="option1"></p>
+  <p class="option" id="option2"></p>
+  <p class="option" id="option3"></p>
+  <p class="option" id="option4"></p>
+  <div class="progress">This is x of y questions.</div>
+</div>
+<div class="startBtn" onclick="startGame();"><p id="startText">Start Quiz</p></div>
+<div class="gameOver">
+
+  <h1>Game Over</h1>
+  <p id="score">You got x out of y answers right</p>
+</div>
+<script>
+  //Global variables
+var questionDisplay = document.querySelector(".question");
+var option1 = document.querySelector("#option1");
+var option2 = document.querySelector("#option2");
+var option3 = document.querySelector("#option3");
+var option4 = document.querySelector("#option4");
+var quiz = document.querySelector(".quiz");
+var startBtn = document.querySelector(".startBtn");
+var startText = document.querySelector("#startText");
+var gameOver = document.querySelector(".gameOver");
+
+//Initiate values
+var correctAnswers = 0;
+let question;
+
+function startGame(){
+  gameOver.style.visibility = "hidden";
+  startBtn.style.visibility = "hidden";
+  quiz.style.visibility = "visible";
+  correctAnswers = 0;
+  questionOne();
+}
+
+//Functions that create questions and answers
+var questionOne = () => {
+  question = {
+  number: "1",
+  question: "1.The _______ specification defines an application programming interface for communication between the server and the application program",
+  option1: "JDBC",
+  option2: "Java Servlet",
+  option3: "Java Applet",
+  option4: "Java Swing",
+  correctAnswer: "Java Servlet"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTwo = () => {
+  question = {
+    number: "2",
+    question: "2.Which method is used to specify before any lines that uses the PintWriter?",
+    option1: "setPageType()",
+    option2: "setContextType()",
+    option3: "setContentType()",
+    option4: "setResponseType()",
+    correctAnswer: "setContentType()"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionThree = () => {
+  question = {
+    number: "3",
+    question: "3.Which of the following is not true for servlet?",
+    option1: "High performance",
+    option2: "It is persistent",
+    option3: "It is single threaded.",
+    option4: "Platform independent",
+    correctAnswer: "It is single threaded."
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFour = () => {
+  question = {
+    number: "4",
+  question: "4.Which of these functions is not a part of the servlet lifecycle?",
+  option1: "Shutting down the servlet",
+    option2: "Invoking the service method of the servlet",
+    option3: "Checking if an instance of servlet exists or not",
+    option4: "Pausing the servlet for a given period of time.",
+    correctAnswer: "Pausing the servlet for a given period of time."
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFive = () => {
+  question = {
+    number: "5",
+  question: "5.How are java web applications packaged?",
+  option1: "jar",
+  option2: "war",
+  option3: "none",
+  option4: "both",
+  correctAnswer: "both"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSix = () => {
+  question = {
+  number: "6",
+  question: "6.Which of the following application servers do not provide built in support for servlets?",
+  option1: "JBoss",
+  option2: "Glassfish",
+  option3: "Tomcat server",
+  option4: "None of the mentioned",
+  correctAnswer: "None of the mentioned"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSeven = () => {
+  question = {
+  number: "7",
+  question: "7.How is the dynamic interception of requests and responses to transform the information done?",
+  option1: "servlet filter",
+  option2: "servlet config",
+  option3: "servlet container",
+  option4: "none of these",
+  correctAnswer: "servlet filter"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionEight = () => {
+  question = {
+  number: "8",
+  question: "8.What is the storage capacity of single cookie?",
+  option1: "2048 MB",
+  option2: "2048 bytes",
+  option3: "4095 MB",
+  option4: "4095 bytes",
+  correctAnswer: "4095 bytes"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionNine = () => {
+  question = {
+  number: "9",
+  question: "9._______causes current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object.",
+  option1: "service()",
+  option2: "wait()",
+  option3: "notify()",
+  option4: "None of the above",
+  correctAnswer: "wait()",
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTen = () => {
+  question = {
+  number: "10",
+  question: "10.________causes the current thread to suspend execution for a specified period.",
+  option1: "service()",
+  option2: "notify()",
+  option3: "wait()",
+  option4: "sleep()",
+  correctAnswer: "sleep()"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+//Show progress throughout quiz
+function displayProgress(currentQuestion){
+  var progress = document.querySelector(".progress");
+  progress.innerHTML = `This is ${currentQuestion} of 10 questions.`
+}
+
+//Show questions and potential answers
+function displayQuestion(question){
+  questionDisplay.innerHTML = question.question;
+  option1.innerHTML = question.option1;
+  option2.innerHTML = question.option2;
+  option3.innerHTML = question.option3;
+  option4.innerHTML = question.option4;
+}
+
+//Check if answer is correct, add to correct answers count
+function checkAnswer(e, question){
+  if (e.target.innerHTML === question.correctAnswer){
+    correctAnswers++;
+  }
+}
+
+//Load next question
+function moveToNextQuestion(currentQuestion){
+  switch (currentQuestion){
+    case "1":
+      questionTwo();
+      break;
+      case "2":
+      questionThree();
+      break;
+      case "3":
+      questionFour();
+      break;
+      case "4":
+      questionFive();
+      break;
+      break;
+      case "5":
+      questionSix();
+      break;
+      break;
+      case "6":
+      questionSeven();
+      break;
+      break;
+      case "7":
+      questionEight();
+      break;
+      break;
+      case "8":
+      questionNine();
+      break;
+      break;
+      case "9":
+      questionTen();
+      break;
+      case "10":
+      showScore(correctAnswers);
+      break;
+    default:
+  }
+  
+}
+
+//Game over, reveal score
+function showScore(correctAnswers){
+  var score = document.getElementById("score");
+  score.innerHTML = `You got ${correctAnswers} out of 10 answers correct!`;
+  quiz.style.visibility = "hidden";
+  gameOver.style.visibility = "visible";
+  startText.innerHTML = "Play Again";
+  startBtn.style.visibility = "visible";
+}
+
+//On each click, check selected option and change to next question.
+document.querySelectorAll('.option').forEach(option => {
+  option.addEventListener('click', function(e) {
+  if (e.target.classList.contains("option")){
+    
+    checkAnswer(e, question);
+    moveToNextQuestion(question.number);
+  } else {
+    console.log("answer not selected");
+  }
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReactJS Level 3 Quiz</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div class="title">ReactJS Level 3 Quiz</div>
+<div class="quiz">
+  <div class="question"></div>
+  <p class="option" id="option1"></p>
+  <p class="option" id="option2"></p>
+  <p class="option" id="option3"></p>
+  <p class="option" id="option4"></p>
+  <div class="progress">This is x of y questions.</div>
+</div>
+<div class="startBtn" onclick="startGame();"><p id="startText">Start Quiz</p></div>
+<div class="gameOver">
+
+  <h1>Game Over</h1>
+  <p id="score">You got x out of y answers right</p>
+</div>
+<script>
+  //Global variables
+var questionDisplay = document.querySelector(".question");
+var option1 = document.querySelector("#option1");
+var option2 = document.querySelector("#option2");
+var option3 = document.querySelector("#option3");
+var option4 = document.querySelector("#option4");
+var quiz = document.querySelector(".quiz");
+var startBtn = document.querySelector(".startBtn");
+var startText = document.querySelector("#startText");
+var gameOver = document.querySelector(".gameOver");
+
+//Initiate values
+var correctAnswers = 0;
+let question;
+
+function startGame(){
+  gameOver.style.visibility = "hidden";
+  startBtn.style.visibility = "hidden";
+  quiz.style.visibility = "visible";
+  correctAnswers = 0;
+  questionOne();
+}
+
+//Functions that create questions and answers
+var questionOne = () => {
+  question = {
+  number: "1",
+  question: "1.Which ReactJS function renders HTML to the web page?",
+  option1: "render()",
+  option2: "ReactDOM.render()",
+  option3: "renders()",
+  option4: "ReactDOM.renders()",
+  correctAnswer: "ReactDOM.render()"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTwo = () => {
+  question = {
+    number: "2",
+    question: "2.JSX stands for _____.",
+    option1: "JSON",
+    option2: "JSON XML",
+    option3: "JavaScript XML",
+    option4: "None of above",
+    correctAnswer: "JavaScript XML"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionThree = () => {
+  question = {
+    number: "3",
+    question: "3.JSX allows us to write _____.",
+    option1: "jQuery in React",
+    option2: "Angular Code in React",
+    option3: "MySQL in React",
+    option4: "HTML in React",
+    correctAnswer: "HTML in React"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFour = () => {
+  question = {
+    number: "4",
+  question: "4.A class component must include the _______ statement.",
+  option1: "extends React.Component",
+  option2: "extends React",
+  option3: "extends Component",
+  option4: "extends React.Component.All",
+  correctAnswer: "extends React.Component"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFive = () => {
+  question = {
+    number: "5",
+  question: "5.What are Props?",
+  option1: "Props are arguments passed into React components",
+  option2: "Props are functions in the ReactJS",
+  option3: "Props are used to returns multiple values from the function",
+  option4: "All of the above",
+  correctAnswer: "Props are arguments passed into React components"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSix = () => {
+  question = {
+  number: "6",
+  question: "6.What does props stand for?",
+  option1: "Proper Arguments",
+  option2: "Properties",
+  option3: "Proper Return Values",
+  option4: "All of the above",
+  correctAnswer: "Properties"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSeven = () => {
+  question = {
+  number: "7",
+  question: "7.Which ReactJS command is used to create a new application?",
+  option1: "create-react-app",
+  option2: "new-react-app",
+  option3: "react-app",
+  option4: "None of the above",
+  correctAnswer: "create-react-app"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionEight = () => {
+  question = {
+  number: "8",
+  question: "8.In ES6 – A class is a type of ____.",
+  option1: "Basic datatype",
+  option2: "Derived datatype",
+  option3: "Variable",
+  option4: "Function",
+  correctAnswer: "Function"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionNine = () => {
+  question = {
+  number: "9",
+  question: "9.In ES6 – Which keyword is used to initiate a class?",
+  option1: "function",
+  option2: "class",
+  option3: "ReactClass",
+  option4: "ReactClassJs",
+  correctAnswer: "class"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTen = () => {
+  question = {
+  number: "10",
+  question: "10.With an arrow function – this keyword represents _____.",
+  option1: "Content",
+  option2: "Header object",
+  option3: "Current object",
+  option4: "Child object",
+  correctAnswer: "Header object"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+//Show progress throughout quiz
+function displayProgress(currentQuestion){
+  var progress = document.querySelector(".progress");
+  progress.innerHTML = `This is ${currentQuestion} of 10 questions.`
+}
+
+//Show questions and potential answers
+function displayQuestion(question){
+  questionDisplay.innerHTML = question.question;
+  option1.innerHTML = question.option1;
+  option2.innerHTML = question.option2;
+  option3.innerHTML = question.option3;
+  option4.innerHTML = question.option4;
+}
+
+//Check if answer is correct, add to correct answers count
+function checkAnswer(e, question){
+  if (e.target.innerHTML === question.correctAnswer){
+    correctAnswers++;
+  }
+}
+
+//Load next question
+function moveToNextQuestion(currentQuestion){
+  switch (currentQuestion){
+    case "1":
+      questionTwo();
+      break;
+      case "2":
+      questionThree();
+      break;
+      case "3":
+      questionFour();
+      break;
+      case "4":
+      questionFive();
+      break;
+      break;
+      case "5":
+      questionSix();
+      break;
+      break;
+      case "6":
+      questionSeven();
+      break;
+      break;
+      case "7":
+      questionEight();
+      break;
+      break;
+      case "8":
+      questionNine();
+      break;
+      break;
+      case "9":
+      questionTen();
+      break;
+      case "10":
+      showScore(correctAnswers);
+      break;
+    default:
+  }
+  
+}
+
+//Game over, reveal score
+function showScore(correctAnswers){
+  var score = document.getElementById("score");
+  score.innerHTML = `You got ${correctAnswers} out of 10 answers correct!`;
+  quiz.style.visibility = "hidden";
+  gameOver.style.visibility = "visible";
+  startText.innerHTML = "Play Again";
+  startBtn.style.visibility = "visible";
+}
+
+//On each click, check selected option and change to next question.
+document.querySelectorAll('.option').forEach(option => {
+  option.addEventListener('click', function(e) {
+  if (e.target.classList.contains("option")){
+    
+    checkAnswer(e, question);
+    moveToNextQuestion(question.number);
+  } else {
+    console.log("answer not selected");
+  }
+});
+});
+</script>
+</body>
+</html>

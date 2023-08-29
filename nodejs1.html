@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NodeJS Level 1 Quiz</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div class="title">NodeJS Level 1 Quiz</div>
+<div class="quiz">
+  <div class="question"></div>
+  <p class="option" id="option1"></p>
+  <p class="option" id="option2"></p>
+  <p class="option" id="option3"></p>
+  <p class="option" id="option4"></p>
+  <div class="progress">This is x of y questions.</div>
+</div>
+<div class="startBtn" onclick="startGame();"><p id="startText">Start Quiz</p></div>
+<div class="gameOver">
+
+  <h1>Game Over</h1>
+  <p id="score">You got x out of y answers right</p>
+</div>
+<script>
+  //Global variables
+var questionDisplay = document.querySelector(".question");
+var option1 = document.querySelector("#option1");
+var option2 = document.querySelector("#option2");
+var option3 = document.querySelector("#option3");
+var option4 = document.querySelector("#option4");
+var quiz = document.querySelector(".quiz");
+var startBtn = document.querySelector(".startBtn");
+var startText = document.querySelector("#startText");
+var gameOver = document.querySelector(".gameOver");
+
+//Initiate values
+var correctAnswers = 0;
+let question;
+
+function startGame(){
+  gameOver.style.visibility = "hidden";
+  startBtn.style.visibility = "hidden";
+  quiz.style.visibility = "visible";
+  correctAnswers = 0;
+  questionOne();
+}
+
+//Functions that create questions and answers
+var questionOne = () => {
+  question = {
+  number: "1",
+  question: "1.Why code written in Node.JS is pretty fast although being written in JavaScript?",
+  option1: "converts JavaScript code to Java based code and then execute the same.",
+  option2: "converts JavaScript code to C based code and then execute the same.",
+  option3: "Being built on Google Chrome's V8 JavaScript Engine.",
+  option4: "None of the above.",
+  correctAnswer: "Being built on Google Chrome's V8 JavaScript Engine."
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTwo = () => {
+  question = {
+    number: "2",
+    question: "2.Which of the following command will show version of Node?",
+    option1: "$ npm --version",
+    option2: "$ node --version",
+    option3: "$ npm getVersion",
+    option4: "$ node getVersion",
+    correctAnswer: "$ node --version"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionThree = () => {
+  question = {
+    number: "3",
+    question: "3.Which of the following code gets length of a buffer buf?",
+    option1: "buf.length",
+    option2: "buf.size",
+    option3: "buf.length()",
+    option4: "buf.size()",
+    correctAnswer: "buf.length"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFour = () => {
+  question = {
+    number: "4",
+  question: "4.Which of the following is true about __filename global object?",
+  option1: "The __filename represents the filename of the code being executed.",
+  option2: "The __filename represents the resolved absolute path of code file.",
+  option3: "Both of the above.",
+  option4: "none of these",
+  correctAnswer: "Both of the above."
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFive = () => {
+  question = {
+    number: "5",
+  question: "5.Which of the following is the correct way to get a normalized path?",
+  option1: "path.normalize()",
+  option2: "fs.normalize()",
+  option3: "os.normalize()",
+  option4: "none of these",
+  correctAnswer: "path.normalize()"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSix = () => {
+  question = {
+  number: "6",
+  question: "6.Which of the following method resolves an ip address to an array of hostnames?",
+  option1: "dns.reverse(ip, callback)",
+  option2: "dns.resolve(hostname[, rrtype], callback)",
+  option3: "dns.resolve4(hostname, callback)",
+  option4: "none",
+  correctAnswer: "dns.reverse(ip, callback)"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSeven = () => {
+  question = {
+  number: "7",
+  question: "7.Transform stream is a type of duplex stream.",
+  option1: "True",
+  option2: "False",
+  option3: "may be",
+  option4: "both",
+  correctAnswer: "True"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionEight = () => {
+  question = {
+  number: "8",
+  question: "8.What is Node.js?",
+  option1: "A programming language",
+  option2: "A web server",
+  option3: "A database management system",
+  option4: "A front-end framework",
+  correctAnswer: "A web server"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionNine = () => {
+  question = {
+  number: "9",
+  question: "9.Which of the following is an advantage of using Node.js?",
+  option1: "It is a statically typed language",
+  option2: "It is a compiled language",
+  option3: "It has a large standard library",
+  option4: "It has a non-blocking I/O model",
+  correctAnswer: "It has a non-blocking I/O model",
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTen = () => {
+  question = {
+  number: "10",
+  question: "10.What is NPM?",
+  option1: "Node.js Package Manager",
+  option2: "Node.js Programming Module",
+  option3: "Node.js Programming Methodology",
+  option4: "none of these",
+  correctAnswer: "Node.js Package Manager"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+//Show progress throughout quiz
+function displayProgress(currentQuestion){
+  var progress = document.querySelector(".progress");
+  progress.innerHTML = `This is ${currentQuestion} of 10 questions.`
+}
+
+//Show questions and potential answers
+function displayQuestion(question){
+  questionDisplay.innerHTML = question.question;
+  option1.innerHTML = question.option1;
+  option2.innerHTML = question.option2;
+  option3.innerHTML = question.option3;
+  option4.innerHTML = question.option4;
+}
+
+//Check if answer is correct, add to correct answers count
+function checkAnswer(e, question){
+  if (e.target.innerHTML === question.correctAnswer){
+    correctAnswers++;
+  }
+}
+
+//Load next question
+function moveToNextQuestion(currentQuestion){
+  switch (currentQuestion){
+    case "1":
+      questionTwo();
+      break;
+      case "2":
+      questionThree();
+      break;
+      case "3":
+      questionFour();
+      break;
+      case "4":
+      questionFive();
+      break;
+      break;
+      case "5":
+      questionSix();
+      break;
+      break;
+      case "6":
+      questionSeven();
+      break;
+      break;
+      case "7":
+      questionEight();
+      break;
+      break;
+      case "8":
+      questionNine();
+      break;
+      break;
+      case "9":
+      questionTen();
+      break;
+      case "10":
+      showScore(correctAnswers);
+      break;
+    default:
+  }
+  
+}
+
+//Game over, reveal score
+function showScore(correctAnswers){
+  var score = document.getElementById("score");
+  score.innerHTML = `You got ${correctAnswers} out of 10 answers correct!`;
+  quiz.style.visibility = "hidden";
+  gameOver.style.visibility = "visible";
+  startText.innerHTML = "Play Again";
+  startBtn.style.visibility = "visible";
+}
+
+//On each click, check selected option and change to next question.
+document.querySelectorAll('.option').forEach(option => {
+  option.addEventListener('click', function(e) {
+  if (e.target.classList.contains("option")){
+    
+    checkAnswer(e, question);
+    moveToNextQuestion(question.number);
+  } else {
+    console.log("answer not selected");
+  }
+});
+});
+</script>
+</body>
+</html>

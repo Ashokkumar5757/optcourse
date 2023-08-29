@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYSQL Level 3 Quiz</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div class="title">MYSQL Level 3 Quiz</div>
+<div class="quiz">
+  <div class="question"></div>
+  <p class="option" id="option1"></p>
+  <p class="option" id="option2"></p>
+  <p class="option" id="option3"></p>
+  <p class="option" id="option4"></p>
+  <div class="progress">This is x of y questions.</div>
+</div>
+<div class="startBtn" onclick="startGame();"><p id="startText">Start Quiz</p></div>
+<div class="gameOver">
+
+  <h1>Game Over</h1>
+  <p id="score">You got x out of y answers right</p>
+</div>
+<script>
+  //Global variables
+var questionDisplay = document.querySelector(".question");
+var option1 = document.querySelector("#option1");
+var option2 = document.querySelector("#option2");
+var option3 = document.querySelector("#option3");
+var option4 = document.querySelector("#option4");
+var quiz = document.querySelector(".quiz");
+var startBtn = document.querySelector(".startBtn");
+var startText = document.querySelector("#startText");
+var gameOver = document.querySelector(".gameOver");
+
+//Initiate values
+var correctAnswers = 0;
+let question;
+
+function startGame(){
+  gameOver.style.visibility = "hidden";
+  startBtn.style.visibility = "hidden";
+  quiz.style.visibility = "visible";
+  correctAnswers = 0;
+  questionOne();
+}
+
+//Functions that create questions and answers
+var questionOne = () => {
+  question = {
+  number: "1",
+  question: "1.In which language MYSQL is written?",
+  option1: "PYTHON",
+  option2: "C/C++",
+  option3: "JAVA",
+  option4: "COBOLT",
+  correctAnswer: "C/C++"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTwo = () => {
+  question = {
+    number: "2",
+    question: "2.To see the list of options provided by MYSQL which of the following command is used?",
+    option1: "HELP",
+    option2: "–HELP",
+    option3: "-- HELP",
+    option4: "ELP-",
+    correctAnswer: "-- HELP"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionThree = () => {
+  question = {
+    number: "3",
+    question: "3.What do you mean by HOST in MYSQL?",
+    option1: "HOST is the user name.",
+    option2: "HOST is the representation of where the MYSQL server is running.",
+    option3: "HOST is the administration’s machine name.",
+    option4: "None",
+    correctAnswer: "HOST is the representation of where the MYSQL server is running."
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFour = () => {
+  question = {
+    number: "4",
+  question: "4.Is a semicolon necessary after every query?",
+  option1: "TRUE",
+  option2: "FALSE",
+  option3: "May be",
+  option4: "Can't say",
+  correctAnswer: "TRUE"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionFive = () => {
+  question = {
+    number: "5",
+  question: "5.To know your MYSQL version and current date which of the following command you should use?",
+  option1: "VERSION, CURRENT_DATE();",
+  option2: "SELECT VERSION, CURRENTDATE();",
+  option3: "SELECT VERSION(), CURRENT_DATE;",
+  option4: "SELECT VERSON(),CURRENT_DATE();",
+  correctAnswer: "SELECT VERSION(), CURRENT_DATE;"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSix = () => {
+  question = {
+  number: "6",
+  question: "6.In which form MYSQL query results are displayed?",
+  option1: "LIST",
+  option2: "TUPLE",
+  option3: "ROWS AND COLUMNS",
+  option4: "LIST AND TUPLES",
+  correctAnswer: "ROWS AND COLUMNS"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionSeven = () => {
+  question = {
+  number: "7",
+  question: "7.To see all the databases which command is used?",
+  option1: "Show database;",
+  option2: "Show databases;",
+  option3: "Show database();",
+  option4: "Show_all database;",
+  correctAnswer: "Show databases;"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionEight = () => {
+  question = {
+  number: "8",
+  question: "8.Which of the following command is used to delete a database?",
+  option1: "DELETE DATABASE_NAME;",
+  option2: "DROP DATABASE_NAME;",
+  option3: "DROP DATABASE DATABASE_NAME;",
+  option4: "DELETE DATABASE DATABASE_NAME;",
+  correctAnswer: "DROP DATABASE DATABASE_NAME;"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionNine = () => {
+  question = {
+  number: "9",
+  question: "9.ALTER command is a type of which SQL command?",
+  option1: "DML",
+  option2: "DDL",
+  option3: "DQL",
+  option4: "DCL",
+  correctAnswer: "DDL"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+
+var questionTen = () => {
+  question = {
+  number: "10",
+  question: "10.If you are asked to delete the entire data of a table without disturbing the table definition then in such case which statement you will use?",
+  option1: "DELETE",
+  option2: "TRUNCATE",
+  option3: "DROP",
+  option4: "CLEAR",
+  correctAnswer: "TRUNCATE"
+  };
+  displayQuestion(question);
+  displayProgress(question.number);
+  return question;
+};
+//Show progress throughout quiz
+function displayProgress(currentQuestion){
+  var progress = document.querySelector(".progress");
+  progress.innerHTML = `This is ${currentQuestion} of 10 questions.`
+}
+
+//Show questions and potential answers
+function displayQuestion(question){
+  questionDisplay.innerHTML = question.question;
+  option1.innerHTML = question.option1;
+  option2.innerHTML = question.option2;
+  option3.innerHTML = question.option3;
+  option4.innerHTML = question.option4;
+}
+
+//Check if answer is correct, add to correct answers count
+function checkAnswer(e, question){
+  if (e.target.innerHTML === question.correctAnswer){
+    correctAnswers++;
+  }
+}
+
+//Load next question
+function moveToNextQuestion(currentQuestion){
+  switch (currentQuestion){
+    case "1":
+      questionTwo();
+      break;
+      case "2":
+      questionThree();
+      break;
+      case "3":
+      questionFour();
+      break;
+      case "4":
+      questionFive();
+      break;
+      break;
+      case "5":
+      questionSix();
+      break;
+      break;
+      case "6":
+      questionSeven();
+      break;
+      break;
+      case "7":
+      questionEight();
+      break;
+      break;
+      case "8":
+      questionNine();
+      break;
+      break;
+      case "9":
+      questionTen();
+      break;
+      case "10":
+      showScore(correctAnswers);
+      break;
+    default:
+  }
+  
+}
+
+//Game over, reveal score
+function showScore(correctAnswers){
+  var score = document.getElementById("score");
+  score.innerHTML = `You got ${correctAnswers} out of 10 answers correct!`;
+  quiz.style.visibility = "hidden";
+  gameOver.style.visibility = "visible";
+  startText.innerHTML = "Play Again";
+  startBtn.style.visibility = "visible";
+}
+
+//On each click, check selected option and change to next question.
+document.querySelectorAll('.option').forEach(option => {
+  option.addEventListener('click', function(e) {
+  if (e.target.classList.contains("option")){
+    
+    checkAnswer(e, question);
+    moveToNextQuestion(question.number);
+  } else {
+    console.log("answer not selected");
+  }
+});
+});
+</script>
+</body>
+</html>
